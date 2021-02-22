@@ -2,7 +2,7 @@
 
 namespace StoreModels
 {
-    class Order
+    public class Order
     {
         private Customer OrderCustomer{ get; set; } 
         private float OrderTotal { get; set; }
