@@ -6,6 +6,7 @@ namespace StoreDL
     {
         Customer CreateCustomer(Customer newCustomer);
         Location CreateLocation(Location newLocation);
+        Product CreateProduct(Product newProduct);
         List<Customer> GetCustomers();
     }
 }

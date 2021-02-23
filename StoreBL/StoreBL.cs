@@ -19,5 +19,9 @@ namespace StoreBL
         {
             _repo.CreateLocation(newLocation);
         }
+        public void CreateProduct(Product newProduct)
+        {
+            _repo.CreateProduct(newProduct);
+        }
     }
 }

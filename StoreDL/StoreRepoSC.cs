@@ -18,5 +18,10 @@ namespace StoreDL
             Storage.AllLocations.Add(newLocation);
             return newLocation;
         }
+        public Product CreateProduct(Product newProduct)
+        {
+            Storage.AllProducts.Add(newProduct);
+            return newProduct;
+        }
     }
 }
