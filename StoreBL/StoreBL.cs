@@ -4,10 +4,10 @@ using System;
 using System.Collections.Generic;
 namespace StoreBL
 {
-    public class StoreBL : IStoreBL
+    public class MyStoreBL : IStoreBL
     {
         private IStoreRepository _repo;
-        public StoreBL(IStoreRepository repo)
+        public MyStoreBL(IStoreRepository repo)
         {
             _repo = repo;
         }
