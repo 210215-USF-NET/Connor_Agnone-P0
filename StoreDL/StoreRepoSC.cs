@@ -13,5 +13,10 @@ namespace StoreDL
             Storage.AllCustomers.Add(newCustomer);
             return newCustomer;
         }
+        public Location CreateLocation(Location newLocation)
+        {
+            Storage.AllLocations.Add(newLocation);
+            return newLocation;
+        }
     }
 }

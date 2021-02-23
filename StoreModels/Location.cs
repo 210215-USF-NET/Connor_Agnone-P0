@@ -2,8 +2,8 @@ namespace StoreModels
 {
     public class Location
     {
-        private string LocationName { get; set; }
-        private string LocationAddress { get; set; }
+        public string LocationName { get; set; }
+        public string LocationAddress { get; set; }
 
     }
 }
