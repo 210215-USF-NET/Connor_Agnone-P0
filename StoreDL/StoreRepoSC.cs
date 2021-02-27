@@ -23,5 +23,15 @@ namespace StoreDL
             Storage.AllProducts.Add(newProduct);
             return newProduct;
         }
+
+        public Customer SearchCustomerName(string name)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Customer DeleteCustomer(Customer customer2BDeleted)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

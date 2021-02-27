@@ -23,5 +23,20 @@ namespace StoreBL
         {
             _repo.CreateProduct(newProduct);
         }
+
+        public void DeleteCustomer(Customer customer2BDeleted)
+        {
+            _repo.DeleteCustomer(customer2BDeleted);
+        }
+
+        public List<Customer> GetCustomers()
+        {
+            return _repo.GetCustomers();
+        }
+
+        public Customer SearchCustomerName(string customer)
+        {
+            return _repo.SearchCustomerName(customer);
+        }
     }
 }

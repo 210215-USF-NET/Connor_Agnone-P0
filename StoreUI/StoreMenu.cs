@@ -19,6 +19,9 @@ namespace StoreUI
                 Console.WriteLine("[1] Create a location");
                 Console.WriteLine("[2] Create a product");
                 Console.WriteLine("[3] Exit.");
+                Console.WriteLine("[4] Get All Customers");
+                Console.WriteLine("[5] Find a customer");
+                Console.WriteLine("[6] Delete a customer");
                 Console.WriteLine("Enter a number:");
                 string userInput = Console.ReadLine();
                 switch(userInput)
@@ -33,6 +36,15 @@ namespace StoreUI
                         break;
                     case "3":
                         stay = false;
+                        break;
+                    case "4":
+                        GetCustomers();
+                        break;
+                    case "5":
+                        SearchCustomerName();
+                        break;
+                    case "6":
+                        DeleteCustomer();
                         break;
                     default:
                         Console.WriteLine("Invalid input! Not part of the menu options! D:<");
@@ -63,6 +75,42 @@ namespace StoreUI
             Console.WriteLine("Store Entered!");
             Console.ReadLine();
             Console.WriteLine($"Store info:\n\tName: {newLocation.LocationName}\n\tAddress: {newLocation.LocationAddress}");
+        }
+        public void GetCustomers()
+        {
+            foreach(var item in _storeBL.GetCustomers())
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("Press any key to continue");
+            Console.ReadLine();
+        }
+        public void SearchCustomerName()
+        {
+            Console.WriteLine("Enter Customer's Name:");
+            Customer foundCustomer = _storeBL.SearchCustomerName(Console.ReadLine());
+            if(foundCustomer == null)
+            {
+                Console.WriteLine("No customer found :(");
+            }
+            else
+            {
+                Console.WriteLine(foundCustomer.ToString());
+            }
+        }
+        public void DeleteCustomer()
+        {
+            Console.WriteLine("Enter the customer to be deleted:");
+            Customer customer2BDeleted = _storeBL.SearchCustomerName(Console.ReadLine());
+            if(customer2BDeleted == null)
+            {
+                Console.WriteLine("We can't find the customer. They may have already been deleted.\nOr you typed their name wrong.");
+            }
+            else
+            {
+                _storeBL.DeleteCustomer(customer2BDeleted);
+                Console.WriteLine($"Sucess!! {customer2BDeleted.CustomerName} is gone from the Customer Collection");
+            }
         }
     }
 }

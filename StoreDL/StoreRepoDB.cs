@@ -32,9 +32,25 @@ namespace StoreDL
             throw new System.NotImplementedException();
         }
 
+        public Customer DeleteCustomer(Customer customer2BDeleted)
+        {
+            _context.Customers.Remove(_mapper.ParseCustomer(customer2BDeleted));
+            _context.SaveChanges();
+            return customer2BDeleted;
+        }
+
         public List<Model.Customer> GetCustomers()
         {
             return _context.Customers.AsNoTracking().Select(x => _mapper.ParseCustomer(x)).ToList();
+        }
+
+        public Customer SearchCustomerName(string name)
+        {
+            return _context.Customers
+            .AsNoTracking()
+            .Select(x => _mapper.ParseCustomer(x))
+            .ToList()
+            .FirstOrDefault(x => x.CustomerName == name);
         }
     }
 }

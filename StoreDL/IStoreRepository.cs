@@ -8,5 +8,7 @@ namespace StoreDL
         Location CreateLocation(Location newLocation);
         Product CreateProduct(Product newProduct);
         List<Customer> GetCustomers();
+        Customer SearchCustomerName(string name);
+        Customer DeleteCustomer(Customer customer2BDeleted);
     }
 }

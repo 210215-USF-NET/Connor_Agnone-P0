@@ -7,6 +7,9 @@ namespace StoreBL
         void CreateCustomer(Customer newCustomer);
         void CreateLocation(Location newLocation);
         void CreateProduct(Product newProduct);
+        List<Customer> GetCustomers();
+        Customer SearchCustomerName(string customer);
+        void DeleteCustomer(Customer customer2BDeleted);
         /*void CreateProduct(Product newProduct);//manager functionality
         void CreateOrder(Order newOrder);
         //search customer, view location inventory, place order
