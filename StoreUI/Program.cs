@@ -1,14 +1,31 @@
-﻿using System;
+﻿using System.IO;
 using StoreModels;
 using StoreBL;
 using StoreDL;
+using StoreDL.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 namespace StoreUI
 {
     class Program
     {
         static void Main(string[] args)
         {
-            IMenu menu = new StoreMenu(new MyStoreBL(new StoreRepoSC()));
+            //get config file
+            var configuration = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json")
+            .Build();
+
+            //set up db connection
+            string connectionString = configuration.GetConnectionString("StoreDB");
+            DbContextOptions<StoreDBContext> options = new DbContextOptionsBuilder<StoreDBContext>()
+            .UseSqlServer(connectionString)
+            .Options;
+            
+            using var context = new StoreDBContext(options);
+
+            IMenu menu = new StoreMenu(new MyStoreBL(new StoreRepoDB(context, new StoreMapper())));
             menu.Start();
             /*Product newProduct = new Product();
             Console.WriteLine("Enter a product name:");

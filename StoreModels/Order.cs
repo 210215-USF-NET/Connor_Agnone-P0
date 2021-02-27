@@ -1,12 +1,10 @@
 ﻿using System;
-
+using System.Collections.Generic;
 namespace StoreModels
 {
     public class Order
     {
-        private Customer OrderCustomer{ get; set; } 
         private float OrderTotal { get; set; }
-        private Location OrderLocation { get; set; }
-
+        private List<Inventory> OrderItems { get; set; }
     }
 }
