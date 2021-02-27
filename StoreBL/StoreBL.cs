@@ -34,6 +34,16 @@ namespace StoreBL
             return _repo.GetCustomers();
         }
 
+        public List<Location> GetLocations()
+        {
+            return _repo.GetLocations();
+        }
+
+        public List<Product> GetProducts()
+        {
+            return _repo.GetProducts();
+        }
+
         public Customer SearchCustomerName(string customer)
         {
             return _repo.SearchCustomerName(customer);

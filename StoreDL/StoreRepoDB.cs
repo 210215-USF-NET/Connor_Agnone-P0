@@ -44,6 +44,16 @@ namespace StoreDL
             return _context.Customers.AsNoTracking().Select(x => _mapper.ParseCustomer(x)).ToList();
         }
 
+        public List<Model.Location> GetLocations()
+        {
+            return _context.Locations.AsNoTracking().Select(x => _mapper.ParseLocation(x)).ToList();
+        }
+
+        public List<Product> GetProducts()
+        {
+            return _context.Products.AsNoTracking().Select(x => _mapper.ParseProduct(x)).ToList();
+        }
+
         public Customer SearchCustomerName(string name)
         {
             return _context.Customers

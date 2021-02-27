@@ -10,5 +10,7 @@ namespace StoreDL
         List<Customer> GetCustomers();
         Customer SearchCustomerName(string name);
         Customer DeleteCustomer(Customer customer2BDeleted);
+        List<Location> GetLocations();
+        List<Product> GetProducts();
     }
 }

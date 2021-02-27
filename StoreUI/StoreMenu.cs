@@ -22,6 +22,8 @@ namespace StoreUI
                 Console.WriteLine("[4] Get All Customers");
                 Console.WriteLine("[5] Find a customer");
                 Console.WriteLine("[6] Delete a customer");
+                Console.WriteLine("[7] Get all Locations");
+                Console.WriteLine("[8] Get All Inventory");
                 Console.WriteLine("Enter a number:");
                 string userInput = Console.ReadLine();
                 switch(userInput)
@@ -45,6 +47,12 @@ namespace StoreUI
                         break;
                     case "6":
                         DeleteCustomer();
+                        break;
+                    case "7":
+                        GetLocations();
+                        break;
+                    case "8":
+                        GetProducts();
                         break;
                     default:
                         Console.WriteLine("Invalid input! Not part of the menu options! D:<");
@@ -79,6 +87,24 @@ namespace StoreUI
         public void GetCustomers()
         {
             foreach(var item in _storeBL.GetCustomers())
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("Press any key to continue");
+            Console.ReadLine();
+        }
+        public void GetLocations()
+        {
+            foreach(var item in _storeBL.GetLocations())
+            {
+                Console.WriteLine(item.ToString());
+            }
+            Console.WriteLine("Press any key to continue");
+            Console.ReadLine();
+        }
+        public void GetProducts()
+        {
+            foreach(var item in _storeBL.GetProducts())
             {
                 Console.WriteLine(item.ToString());
             }

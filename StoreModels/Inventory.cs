@@ -5,5 +5,6 @@ namespace StoreModels
         public Product InventoryProduct { get; set ;}
         public int InventoryQuantity { get; set; }
         public Location InventoryLocation { get; set; }
+        public int? InventoryID { get; set; }
     }
 }
