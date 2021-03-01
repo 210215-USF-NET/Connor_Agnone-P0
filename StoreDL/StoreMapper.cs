@@ -68,15 +68,6 @@ namespace StoreDL
                 //InventoryProductNavigation = ParseProduct(inventory.InventoryProduct)
             };
         }
-        /*************************************************************************
-                What needs done here:
-                figure out how to get inventory for whatever store location
-                orders and orderitems will be a similar problem
-                -tried forcing it with ToList()
-                Make menus better
-                Need to make Unit Tests!
-                Do Logs!!!!
-        *************************************************************************/
         public Model.Location ParseLocation(Entity.Location location)
         {
             return new Model.Location
@@ -107,22 +98,51 @@ namespace StoreDL
 
         public Model.Order ParseOrder(Entity.Order order)
         {
-            throw new System.NotImplementedException();
+            return new Model.Order
+            {
+                OrderID = order.Id,
+                LocationID = order.OrderLocation,
+                CustomerID = order.OrderCustomer
+            };
         }
 
         public Entity.Order ParseOrder(Model.Order order)
         {
-            throw new System.NotImplementedException();
+            if(order.OrderID == null)
+            {
+                return new Entity.Order();
+            }
+            return new Entity.Order
+            {
+                Id = (int) order.OrderID,
+                OrderCustomer = (int) order.CustomerID,
+                OrderLocation = (int) order.LocationID
+            };
         }
 
-        public OrderItems ParseOrderItems(OrderItem orderItem)
+        public Model.OrderItems ParseOrderItems(Entity.OrderItem orderItem)
         {
-            throw new System.NotImplementedException();
+            return new Model.OrderItems
+            {
+                OrderQuantity = orderItem.OrderQuantity,
+                OrderItemID = orderItem.Id
+            };
         }
 
-        public OrderItem ParseOrderItems(OrderItems orderItem)
+        public Entity.OrderItem ParseOrderItems(Model.OrderItems orderItem)
         {
-            throw new System.NotImplementedException();
+            if(orderItem.OrderItemID == null)
+            {
+                return new Entity.OrderItem
+                {
+                    OrderQuantity = orderItem.OrderQuantity
+                };
+            }
+            return new Entity.OrderItem
+            {
+                Id = (int)orderItem.OrderItemID,
+                OrderQuantity = orderItem.OrderQuantity
+            };
         }
 
         public Model.Product ParseProduct(Entity.Product product)

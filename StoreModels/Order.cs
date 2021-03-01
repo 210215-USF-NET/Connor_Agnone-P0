@@ -4,10 +4,10 @@ namespace StoreModels
 {
     public class Order
     {
-        private decimal OrderTotal { get; set; }
+        public decimal OrderTotal { get; set; }
         public int? OrderID { get; set; }
         public int? LocationID { get; set; }
         public int? CustomerID { get; set; }
-        private List<Product> OrderItems { get; set; }
+        public List<OrderItems> OrderItems { get; set; }
     }
 }
