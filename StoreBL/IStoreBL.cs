@@ -14,7 +14,7 @@ namespace StoreBL
         void DeleteCustomer(Customer customer2BDeleted);
         List<Location> GetLocations();
         List<Product> GetProducts();
-        List<Inventory> GetInventories(Location location);
+        List<Inventory> GetInventories();
         /*void CreateProduct(Product newProduct);//manager functionality
         void CreateOrder(Order newOrder);
         //search customer, view location inventory, place order

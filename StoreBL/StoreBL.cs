@@ -45,9 +45,9 @@ namespace StoreBL
         {
             return _repo.GetProducts();
         }
-        public List<Inventory> GetInventories(Location location)
+        public List<Inventory> GetInventories()
         {
-            return _repo.GetInventories(location);
+            return _repo.GetInventories();
         }
 
         public Customer SearchCustomerName(string customer)

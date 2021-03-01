@@ -12,7 +12,7 @@ namespace StoreDL
         Location SetLocation(int locationID);
         Customer DeleteCustomer(Customer customer2BDeleted);
         List<Location> GetLocations();
-        List<Inventory> GetInventories(Location location);
+        List<Inventory> GetInventories();
         List<Product> GetProducts();
         Location CurrentLocation(Location newLocation);
         Customer CurrentCustomer(Customer newCustomer);

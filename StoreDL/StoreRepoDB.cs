@@ -54,12 +54,9 @@ namespace StoreDL
             return _context.Customers.AsNoTracking().Select(x => _mapper.ParseCustomer(x)).ToList();
         }
 
-        public List<Inventory> GetInventories(Location location)
+        public List<Inventory> GetInventories()
         {
-            return _context.Inventories.AsNoTracking()
-            .Select(x => _mapper.ParseInventory(x))
-            .Where(x => x.LocationID == location.LocationID)
-            .ToList();
+            return _context.Inventories.AsNoTracking().Select(x => _mapper.ParseInventory(x)).ToList();
         }
 
         public List<Model.Location> GetLocations()

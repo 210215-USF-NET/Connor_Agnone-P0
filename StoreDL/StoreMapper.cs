@@ -43,7 +43,7 @@ namespace StoreDL
             return new Model.Inventory
             {
                 InventoryQuantity = inventory.Quantity,
-                InventoryProduct = ParseProduct(inventory.InventoryProductNavigation),
+                //InventoryProduct = ParseProduct(inventory.InventoryProductNavigation),
                 InventoryID = inventory.Id,
                 ProductID = inventory.InventoryProduct,
                 LocationID = inventory.InventoryLocation
@@ -55,14 +55,17 @@ namespace StoreDL
             {
                 return new Entity.Inventory
                 {
-
+                    Quantity = inventory.InventoryQuantity,
+                    //InventoryProductNavigation = ParseProduct(inventory.InventoryProduct),
                 };
             }
             return new Entity.Inventory
             {
                 Id = (int)inventory.InventoryID,
                 Quantity = inventory.InventoryQuantity,
-                InventoryLocation = (int) inventory.InventoryID
+                InventoryLocation = (int) inventory.LocationID,
+                InventoryProduct = (int) inventory.ProductID,
+                //InventoryProductNavigation = ParseProduct(inventory.InventoryProduct)
             };
         }
         /*************************************************************************
