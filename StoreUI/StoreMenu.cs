@@ -5,8 +5,8 @@ namespace StoreUI
 {
     public class StoreMenu : IMenu
     {
-        private IStoreBL _storeBL;
-        public StoreMenu(IStoreBL storeBL)
+        private MyStoreBL _storeBL;
+        public StoreMenu(MyStoreBL storeBL)
         {
             _storeBL = storeBL;
         }
@@ -14,16 +14,11 @@ namespace StoreUI
         {
             Boolean stay = true;
             do{
-                Console.WriteLine("Welcome to my store! What would you like to do?");
-                Console.WriteLine("[0] Create a customer");
-                Console.WriteLine("[1] Create a location");
-                Console.WriteLine("[2] Create a product");
-                Console.WriteLine("[3] Exit.");
-                Console.WriteLine("[4] Get All Customers");
-                Console.WriteLine("[5] Find a customer");
-                Console.WriteLine("[6] Delete a customer");
-                Console.WriteLine("[7] Get all Locations");
-                Console.WriteLine("[8] Get All Inventory");
+                Console.WriteLine("Welcome to Connor's Consignment of Conjuring & Craft!");
+                Console.WriteLine("Are you a new or returning customer?");
+                Console.WriteLine("[0] New User");
+                Console.WriteLine("[1] I'm a returning customer");
+                Console.WriteLine("[2] Exit");
                 Console.WriteLine("Enter a number:");
                 string userInput = Console.ReadLine();
                 switch(userInput)
@@ -32,42 +27,63 @@ namespace StoreUI
                         CreateCustomer();
                         break;
                     case "1":
-                        CreateLocation();
-                        break;
-                    case "2":
-                        break;
-                    case "3":
-                        stay = false;
-                        break;
-                    case "4":
-                        GetCustomers();
-                        break;
-                    case "5":
                         SearchCustomerName();
                         break;
-                    case "6":
-                        DeleteCustomer();
-                        break;
-                    case "7":
-                        GetLocations();
-                        break;
-                    case "8":
-                        GetProducts();
+                    case "2":
+                        stay = false;
                         break;
                     default:
                         Console.WriteLine("Invalid input! Not part of the menu options! D:<");
                         break;
                 }
+                Boolean hasntPicked = false;
+                if(stay)
+                {
+                    do
+                    {
+                        Console.WriteLine($"Welcome {_storeBL.currentCustomer.CustomerName}!");
+                        Console.WriteLine("Which of our locations do you want to look at?");
+                        GetLocations();
+                        Console.WriteLine("Enter ID of store you wish to shop at:");
+                        userInput = Console.ReadLine();
+                        switch (userInput)
+                        {
+                            case "1":
+                                SetLocation(1);
+                                break;
+                            case "2":
+                                SetLocation(2);
+                                break;
+                            case "3":
+                                SetLocation(3);
+                                break;
+                            default:
+                                Console.WriteLine("Invalid input! Not part of the menu options! D:<");
+                                hasntPicked = true;
+                                break;
+                        }
+                    }while(hasntPicked);
+                    IMenu menu = new LocationMenu(_storeBL);
+                    menu.Start();
+                }
             }while(stay);
+        }
+        public void SetLocation(int locationID)
+        {
+            _storeBL.currentLocation = _storeBL.SetLocation(locationID);
+            Console.WriteLine($"You picked: {_storeBL.currentLocation.LocationName}");
+            Console.WriteLine("Connecting you now...");
+            Console.ReadLine();
         }
         public void CreateCustomer()
         {
             Customer newCustomer = new Customer();
             Console.WriteLine("Hello. Enter the Customer name please:");
             newCustomer.CustomerName = Console.ReadLine();
-            Console.WriteLine("What's your email:");
+            Console.WriteLine("What's your email?:");
             newCustomer.CustomerEmail = Console.ReadLine();
             _storeBL.CreateCustomer(newCustomer);
+            _storeBL.currentCustomer = newCustomer;
             Console.WriteLine("Customer Entered!");
             Console.ReadLine();
             Console.WriteLine($"Customer info:\n\tName: {newCustomer.CustomerName}\n\tEmail: {newCustomer.CustomerEmail}");
@@ -122,6 +138,7 @@ namespace StoreUI
             else
             {
                 Console.WriteLine(foundCustomer.ToString());
+                _storeBL.currentCustomer = foundCustomer;
             }
         }
         public void DeleteCustomer()

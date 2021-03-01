@@ -4,7 +4,10 @@ namespace StoreModels
 {
     public class Order
     {
-        private float OrderTotal { get; set; }
-        private List<Inventory> OrderItems { get; set; }
+        private decimal OrderTotal { get; set; }
+        public int? OrderID { get; set; }
+        public int? LocationID { get; set; }
+        public int? CustomerID { get; set; }
+        private List<Product> OrderItems { get; set; }
     }
 }

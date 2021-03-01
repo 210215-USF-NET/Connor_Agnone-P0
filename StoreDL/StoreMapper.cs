@@ -2,6 +2,9 @@ using Model = StoreModels;
 using Entity = StoreDL.Entities;
 using StoreModels;
 using StoreDL;
+using System.Collections.Generic;
+using System.Linq;
+using StoreDL.Entities;
 
 namespace StoreDL
 {
@@ -37,21 +40,47 @@ namespace StoreDL
 
         public Model.Inventory ParseInventory(Entity.Inventory inventory)
         {
-            throw new System.NotImplementedException();
+            return new Model.Inventory
+            {
+                InventoryQuantity = inventory.Quantity,
+                InventoryProduct = ParseProduct(inventory.InventoryProductNavigation),
+                InventoryID = inventory.Id,
+                ProductID = inventory.InventoryProduct,
+                LocationID = inventory.InventoryLocation
+            };
         }
-
         public Entity.Inventory ParseInventory(Model.Inventory inventory)
         {
-            throw new System.NotImplementedException();
-        }
+            if(inventory.InventoryID == null)
+            {
+                return new Entity.Inventory
+                {
 
+                };
+            }
+            return new Entity.Inventory
+            {
+                Id = (int)inventory.InventoryID,
+                Quantity = inventory.InventoryQuantity,
+                InventoryLocation = (int) inventory.InventoryID
+            };
+        }
+        /*************************************************************************
+                What needs done here:
+                figure out how to get inventory for whatever store location
+                orders and orderitems will be a similar problem
+                -tried forcing it with ToList()
+                Make menus better
+                Need to make Unit Tests!
+                Do Logs!!!!
+        *************************************************************************/
         public Model.Location ParseLocation(Entity.Location location)
         {
             return new Model.Location
             {
                 LocationName = location.LocationName,
                 LocationAddress = location.LocationAddress,
-                LocationID = location.Id
+                LocationID = location.Id,
             };
         }
 
@@ -71,6 +100,26 @@ namespace StoreDL
                 LocationAddress = location.LocationAddress,
                 Id = (int)location.LocationID
             };
+        }
+
+        public Model.Order ParseOrder(Entity.Order order)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Entity.Order ParseOrder(Model.Order order)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public OrderItems ParseOrderItems(OrderItem orderItem)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public OrderItem ParseOrderItems(OrderItems orderItem)
+        {
+            throw new System.NotImplementedException();
         }
 
         public Model.Product ParseProduct(Entity.Product product)

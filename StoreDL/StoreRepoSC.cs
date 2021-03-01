@@ -34,12 +34,42 @@ namespace StoreDL
             throw new System.NotImplementedException();
         }
 
-        public List<Location> GetLocations()
+        public List<Location> GetLocations(Location location)
         {
             throw new System.NotImplementedException();
         }
 
         public List<Product> GetProducts()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Location SetLocation(int locationID)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public List<Inventory> GetInventories()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public List<Location> GetLocations()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public List<Inventory> GetInventories(Location location)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Location CurrentLocation(Location newLocation)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Customer CurrentCustomer(Customer newCustomer)
         {
             throw new System.NotImplementedException();
         }

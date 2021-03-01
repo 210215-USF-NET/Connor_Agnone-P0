@@ -7,6 +7,8 @@ namespace StoreBL
     public class MyStoreBL : IStoreBL
     {
         private IStoreRepository _repo;
+        public Location currentLocation{ get; set; }
+        public Customer currentCustomer { get; set; }
         public MyStoreBL(IStoreRepository repo)
         {
             _repo = repo;
@@ -43,10 +45,18 @@ namespace StoreBL
         {
             return _repo.GetProducts();
         }
+        public List<Inventory> GetInventories(Location location)
+        {
+            return _repo.GetInventories(location);
+        }
 
         public Customer SearchCustomerName(string customer)
         {
             return _repo.SearchCustomerName(customer);
+        }
+        public Location SetLocation(int locationID)
+        {
+            return _repo.SetLocation(locationID);
         }
     }
 }

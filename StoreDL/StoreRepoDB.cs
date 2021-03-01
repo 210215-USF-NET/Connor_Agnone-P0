@@ -32,6 +32,16 @@ namespace StoreDL
             throw new System.NotImplementedException();
         }
 
+        public Customer CurrentCustomer(Customer newCustomer)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Location CurrentLocation(Location newLocation)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public Customer DeleteCustomer(Customer customer2BDeleted)
         {
             _context.Customers.Remove(_mapper.ParseCustomer(customer2BDeleted));
@@ -42,6 +52,14 @@ namespace StoreDL
         public List<Model.Customer> GetCustomers()
         {
             return _context.Customers.AsNoTracking().Select(x => _mapper.ParseCustomer(x)).ToList();
+        }
+
+        public List<Inventory> GetInventories(Location location)
+        {
+            return _context.Inventories.AsNoTracking()
+            .Select(x => _mapper.ParseInventory(x))
+            .Where(x => x.LocationID == location.LocationID)
+            .ToList();
         }
 
         public List<Model.Location> GetLocations()
@@ -61,6 +79,15 @@ namespace StoreDL
             .Select(x => _mapper.ParseCustomer(x))
             .ToList()
             .FirstOrDefault(x => x.CustomerName == name);
+        }
+
+        public Location SetLocation(int locationID)
+        {
+            return _context.Locations
+            .AsNoTracking()
+            .Select(x => _mapper.ParseLocation(x))
+            .ToList()
+            .FirstOrDefault(x => x.LocationID == locationID);
         }
     }
 }
