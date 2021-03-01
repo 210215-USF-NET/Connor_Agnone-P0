@@ -102,7 +102,8 @@ namespace StoreDL
             {
                 OrderID = order.Id,
                 LocationID = order.OrderLocation,
-                CustomerID = order.OrderCustomer
+                CustomerID = order.OrderCustomer,
+                //OrderDate = order.OrderDate
             };
         }
 
@@ -110,13 +111,20 @@ namespace StoreDL
         {
             if(order.OrderID == null)
             {
-                return new Entity.Order();
+                return new Entity.Order()
+                {
+                    OrderCustomer = (int) order.CustomerID,
+                    OrderLocation = (int) order.LocationID,
+                    //OrderDate = order.OrderDate
+                    OrderItems = order.OrderItems.Select(x => ParseOrderItems(x)).ToList()
+                };
             }
             return new Entity.Order
             {
                 Id = (int) order.OrderID,
                 OrderCustomer = (int) order.CustomerID,
-                OrderLocation = (int) order.LocationID
+                OrderLocation = (int) order.LocationID,
+                //OrderDate = order.OrderDate
             };
         }
 
@@ -125,22 +133,25 @@ namespace StoreDL
             return new Model.OrderItems
             {
                 OrderQuantity = orderItem.OrderQuantity,
-                OrderItemID = orderItem.Id
+                OrderItemID = orderItem.OrderProduct,
+                OrderID = orderItem.Id
             };
         }
 
         public Entity.OrderItem ParseOrderItems(Model.OrderItems orderItem)
         {
-            if(orderItem.OrderItemID == null)
+            /*if(orderItem.OrderID == null)
             {
                 return new Entity.OrderItem
                 {
-                    OrderQuantity = orderItem.OrderQuantity
+                    OrderQuantity = orderItem.OrderQuantity,
                 };
-            }
+            }*/
             return new Entity.OrderItem
             {
-                Id = (int)orderItem.OrderItemID,
+                //Id = (int)orderItem.OrderID,
+                //OrdersId = (int) orderItem.OrderID,
+                OrderProduct = (int)orderItem.OrderItemProduct.ProductID,
                 OrderQuantity = orderItem.OrderQuantity
             };
         }

@@ -16,5 +16,6 @@ namespace StoreDL
         List<Product> GetProducts();
         Location CurrentLocation(Location newLocation);
         Customer CurrentCustomer(Customer newCustomer);
+        Order CreateOrder(Order newOrder);
     }
 }

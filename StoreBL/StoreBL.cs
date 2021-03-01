@@ -58,5 +58,10 @@ namespace StoreBL
         {
             return _repo.SetLocation(locationID);
         }
+
+        public void CreateOrder(Order newOrder)
+        {
+            _repo.CreateOrder(newOrder);
+        }
     }
 }

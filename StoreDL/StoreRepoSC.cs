@@ -73,5 +73,10 @@ namespace StoreDL
         {
             throw new System.NotImplementedException();
         }
+
+        public Order CreateOrder(Order newOrder)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

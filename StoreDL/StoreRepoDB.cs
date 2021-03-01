@@ -27,6 +27,19 @@ namespace StoreDL
             throw new System.NotImplementedException();
         }
 
+        public Order CreateOrder(Order newOrder)
+        {
+            _context.Orders.Add(_mapper.ParseOrder(newOrder));
+            // foreach (var item in newOrder.OrderItems)
+            // {
+            //     //item.OrderID = newOrder.OrderID;
+
+            //     _context.OrderItems.Add(_mapper.ParseOrderItems(item));
+            // }
+            _context.SaveChanges();
+            return newOrder;
+        }
+
         public Product CreateProduct(Product newProduct)
         {
             throw new System.NotImplementedException();

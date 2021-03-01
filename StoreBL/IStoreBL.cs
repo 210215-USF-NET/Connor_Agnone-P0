@@ -15,8 +15,8 @@ namespace StoreBL
         List<Location> GetLocations();
         List<Product> GetProducts();
         List<Inventory> GetInventories();
-        /*void CreateProduct(Product newProduct);//manager functionality
         void CreateOrder(Order newOrder);
+        /*void CreateProduct(Product newProduct);//manager functionality
         //search customer, view location inventory, place order
         Customer SearchCustomer();
         void PlaceOrder();*/
