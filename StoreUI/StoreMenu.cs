@@ -14,6 +14,7 @@ namespace StoreUI
         {
             Boolean stay = true;
             do{
+                Console.Clear();
                 Console.WriteLine("Welcome to Connor's Consignment of Conjuring & Craft!");
                 Console.WriteLine("Are you a new or returning customer?");
                 Console.WriteLine("[0] New User");
@@ -25,9 +26,11 @@ namespace StoreUI
                 {
                     case "0":
                         CreateCustomer();
+                        SendToLocatinMenu();
                         break;
                     case "1":
                         SearchCustomerName();
+                        SendToLocatinMenu();
                         break;
                     case "2":
                         stay = false;
@@ -36,37 +39,40 @@ namespace StoreUI
                         Console.WriteLine("Invalid input! Not part of the menu options! D:<");
                         break;
                 }
-                Boolean hasntPicked = false;
-                if(stay)
-                {
-                    do
-                    {
-                        Console.WriteLine($"Welcome {_storeBL.currentCustomer.CustomerName}!");
-                        Console.WriteLine("Which of our locations do you want to look at?");
-                        GetLocations();
-                        Console.WriteLine("Enter ID of store you wish to shop at:");
-                        userInput = Console.ReadLine();
-                        switch (userInput)
-                        {
-                            case "1":
-                                SetLocation(1);
-                                break;
-                            case "2":
-                                SetLocation(2);
-                                break;
-                            case "3":
-                                SetLocation(3);
-                                break;
-                            default:
-                                Console.WriteLine("Invalid input! Not part of the menu options! D:<");
-                                hasntPicked = true;
-                                break;
-                        }
-                    }while(hasntPicked);
-                    IMenu menu = new LocationMenu(_storeBL);
-                    menu.Start();
-                }
+                
             }while(stay);
+        }
+        public void SendToLocatinMenu()
+        {
+
+            Boolean hasntPicked = false;
+            do
+            {
+                Console.Clear();
+                Console.WriteLine($"Welcome {_storeBL.currentCustomer.CustomerName}!");
+                Console.WriteLine("Which of our locations do you want to look at?");
+                GetLocations();
+                Console.WriteLine("Enter ID of store you wish to shop at:");
+                string userInput = Console.ReadLine();
+                switch (userInput)
+                {
+                    case "1":
+                        SetLocation(1);
+                        break;
+                    case "2":
+                        SetLocation(2);
+                        break;
+                    case "3":
+                        SetLocation(3);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid input! Not part of the menu options! D:<");
+                        hasntPicked = true;
+                        break;
+                }
+            }while(hasntPicked);
+            IMenu menu = new LocationMenu(_storeBL);
+            menu.Start();
         }
         public void SetLocation(int locationID)
         {
@@ -78,15 +84,15 @@ namespace StoreUI
         public void CreateCustomer()
         {
             Customer newCustomer = new Customer();
-            Console.WriteLine("Hello. Enter the Customer name please:");
+            Console.WriteLine("Please enter your name:");
             newCustomer.CustomerName = Console.ReadLine();
             Console.WriteLine("What's your email?:");
             newCustomer.CustomerEmail = Console.ReadLine();
             _storeBL.CreateCustomer(newCustomer);
             _storeBL.currentCustomer = newCustomer;
             Console.WriteLine("Customer Entered!");
-            Console.ReadLine();
             Console.WriteLine($"Customer info:\n\tName: {newCustomer.CustomerName}\n\tEmail: {newCustomer.CustomerEmail}");
+            Console.ReadLine();
         }
         public void CreateLocation()
         {
@@ -115,8 +121,6 @@ namespace StoreUI
             {
                 Console.WriteLine(item.ToString());
             }
-            Console.WriteLine("Press any key to continue");
-            Console.ReadLine();
         }
         public void GetProducts()
         {

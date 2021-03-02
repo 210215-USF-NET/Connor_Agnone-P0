@@ -17,6 +17,7 @@ namespace StoreUI
             Boolean stay = true;
             do
             {
+                Console.Clear();
                 Console.WriteLine($"Welcome to {_storeBL.currentLocation.LocationName}, {_storeBL.currentCustomer.CustomerName}!");
                 Console.WriteLine("Would you like to start an order, see our inventory, or exit?");
                 Console.WriteLine("[0] Let's start an order");
@@ -67,6 +68,8 @@ namespace StoreUI
             OrderItems test = new OrderItems();
             do
             {
+                Console.Clear();
+                Console.WriteLine($"You're current total is: ${newOrder.OrderTotal}");
                 Console.WriteLine("Enter item ID you desire. Enter 0 to get our inventory. Type 'D' to complete your order:");
                 string userInput = Console.ReadLine();
                 int amount = 0;
@@ -298,7 +301,7 @@ namespace StoreUI
                         Console.WriteLine("Invalid input");
                         break;
                 }
-                Console.WriteLine($"You're current total is: ${newOrder.OrderTotal}");
+                
             }while(orderNotComplete);
             Console.WriteLine($"You're total is: ${newOrder.OrderTotal}");
             newOrder.LocationID = _storeBL.currentLocation.LocationID;
@@ -311,6 +314,7 @@ namespace StoreUI
         }
         public void GetInventory()
         {
+            Console.Clear();
             List<Product> newProucts =_storeBL.GetProducts();
             foreach(var item in _storeBL.GetInventories())
             {
@@ -326,7 +330,7 @@ namespace StoreUI
                 }
                 
             }
-            Console.WriteLine("Press any key to continue");
+            Console.WriteLine("Press enter key to continue");
             Console.ReadLine();
         }
     }
