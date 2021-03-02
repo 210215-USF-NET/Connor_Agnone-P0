@@ -24,7 +24,9 @@ namespace StoreDL
 
         public Location CreateLocation(Location newLocation)
         {
-            throw new System.NotImplementedException();
+            _context.Locations.Add(_mapper.ParseLocation(newLocation));
+            _context.SaveChanges();
+            return newLocation;
         }
 
         public Order CreateOrder(Order newOrder)
@@ -42,7 +44,9 @@ namespace StoreDL
 
         public Product CreateProduct(Product newProduct)
         {
-            throw new System.NotImplementedException();
+            _context.Products.Add(_mapper.ParseProduct(newProduct));
+            _context.SaveChanges();
+            return newProduct;
         }
 
         public Customer CurrentCustomer(Customer newCustomer)

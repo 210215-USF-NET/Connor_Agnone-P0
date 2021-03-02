@@ -28,6 +28,148 @@ namespace StoreTests
                 Assert.Equal(2, customers.Count);
             }
         }
+        [Fact]
+        public void GetLocationsShouldReturnAllLocations()
+        {
+            using(var context = new Entity.StoreDBContext(options))
+            {
+                IStoreRepository _repo = new StoreRepoDB(context, new StoreMapper());
+                var locations = _repo.GetLocations();
+                Assert.Equal(2, locations.Count);
+            }
+        }
+        [Fact]
+        public void GetProductsShouldGetAllProducts()
+        {
+            using(var context = new Entity.StoreDBContext(options))
+            {
+                IStoreRepository _repo = new StoreRepoDB(context, new StoreMapper());
+                var products = _repo.GetProducts();
+                Assert.Equal(3, products.Count);
+            }
+        }
+        [Fact]
+        public void GetInventoriesShouldGetAllInventories()
+        {
+            using(var context = new Entity.StoreDBContext(options))
+            {
+                IStoreRepository _repo = new StoreRepoDB(context, new StoreMapper());
+                var inventories = _repo.GetInventories();
+                Assert.Equal(6, inventories.Count);
+            }
+        }
+        [Fact]
+        public void SearchCustomerNameShouldReturnCustomer()
+        {
+            using(var context = new Entity.StoreDBContext(options))
+            {
+                IStoreRepository _repo = new StoreRepoDB(context, new StoreMapper());
+                var foundCustomer = _repo.SearchCustomerName("Joe");
+
+                Assert.NotNull(foundCustomer);
+                Assert.Equal("Joe", foundCustomer.CustomerName);
+            }
+        }
+        [Fact]
+        public void SetLocationShouldReturnLocation()
+        {
+            using(var context = new Entity.StoreDBContext(options))
+            {
+                IStoreRepository _repo = new StoreRepoDB(context, new StoreMapper());
+                var foundLocation = _repo.SetLocation(2);
+
+                Assert.NotNull(foundLocation);
+                Assert.Equal(2, foundLocation.LocationID);
+            }
+        }
+        [Fact]
+        public void CreateCustomerShouldCreateCustomer()
+        {
+            using(var context = new Entity.StoreDBContext(options))
+            {
+                IStoreRepository _repo = new StoreRepoDB(context, new StoreMapper());
+                _repo.CreateCustomer
+                (
+                    new Model.Customer
+                    {
+                        CustomerName = "Zach",
+                        CustomerEmail = "zach@email.com"
+                    }
+                );
+            }
+            using(var assertContext = new Entity.StoreDBContext(options))
+            {
+                var result = assertContext.Customers.FirstOrDefault(customer => customer.CustomerName == "Zach");
+                Assert.NotNull(result);
+                Assert.Equal("Zach", result.CustomerName);
+            }
+        }
+        [Fact]
+        public void CreateProductShouldCreateProduct()
+        {
+            using(var context = new Entity.StoreDBContext(options))
+            {
+                IStoreRepository _repo = new StoreRepoDB(context, new StoreMapper());
+                _repo.CreateProduct
+                (
+                    new Model.Product
+                    {
+                        ProductName = "Bat Tears",
+                        ProductPrice = 5
+                    }
+                );
+            }
+            using(var assertContext = new Entity.StoreDBContext(options))
+            {
+                var result = assertContext.Products.FirstOrDefault(product => product.ProductName == "Bat Tears");
+                Assert.NotNull(result);
+                Assert.Equal("Bat Tears", result.ProductName);
+            }
+        }
+        [Fact]
+        public void CreateLocationShouldCreateLocation()
+        {
+            using(var context = new Entity.StoreDBContext(options))
+            {
+                IStoreRepository _repo = new StoreRepoDB(context, new StoreMapper());
+                _repo.CreateLocation
+                (
+                    new Model.Location
+                    {
+                        LocationName = "Mandrakes R US",
+                        LocationAddress = "69 Floral Dr."
+                    }
+                );
+            }
+            using(var assertContext = new Entity.StoreDBContext(options))
+            {
+                var result = assertContext.Locations.FirstOrDefault(location => location.LocationName == "Mandrakes R US");
+                Assert.NotNull(result);
+                Assert.Equal("Mandrakes R US", result.LocationName);
+            }
+        }
+        [Fact]
+        public void DeleteCustomerShouldDeleteCustomer()
+        {
+            using(var context = new Entity.StoreDBContext(options))
+            {
+                IStoreRepository _repo = new StoreRepoDB(context, new StoreMapper());
+                _repo.DeleteCustomer
+                (
+                    new Model.Customer
+                    {
+                        CustomerID = 1,
+                        CustomerName = "Joe",
+                        CustomerEmail = "joe@email.com"
+                    }
+                );
+            }
+            using(var assertContext = new Entity.StoreDBContext(options))
+            {
+                var result = assertContext.Customers.FirstOrDefault(customer => customer.CustomerName == "Joe");
+                Assert.Null(result);
+            }
+        }
         private void Seed()
         {
             using(var context = new Entity.StoreDBContext(options))
