@@ -78,5 +78,10 @@ namespace StoreDL
         {
             throw new System.NotImplementedException();
         }
+
+        public void UpdateInventory(Order newOrder)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

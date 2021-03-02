@@ -17,5 +17,6 @@ namespace StoreDL
         Location CurrentLocation(Location newLocation);
         Customer CurrentCustomer(Customer newCustomer);
         Order CreateOrder(Order newOrder);
+        void UpdateInventory(Order newOrder);
     }
 }

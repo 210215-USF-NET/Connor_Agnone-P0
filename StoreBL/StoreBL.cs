@@ -63,5 +63,10 @@ namespace StoreBL
         {
             _repo.CreateOrder(newOrder);
         }
+
+        public void UpdateInventory(Order newOrder)
+        {
+            _repo.UpdateInventory(newOrder);
+        }
     }
 }

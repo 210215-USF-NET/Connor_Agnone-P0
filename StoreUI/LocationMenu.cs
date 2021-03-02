@@ -305,6 +305,7 @@ namespace StoreUI
             newOrder.CustomerID = _storeBL.currentCustomer.CustomerID;
             //newOrder.OrderDate = DateTime.Now;
             _storeBL.CreateOrder(newOrder);
+            _storeBL.UpdateInventory(newOrder);
             Console.WriteLine("order has been submitted!");
             _storeBL.currentCustomer.CustomerOrder = newOrder;
         }

@@ -103,5 +103,28 @@ namespace StoreDL
             .ToList()
             .FirstOrDefault(x => x.LocationID == locationID);
         }
+
+        public void UpdateInventory(Order newOrder)
+        {
+            /* IEnumerable<Model.Inventory> inventory = _context.Inventories.AsNoTracking().Select(x => _mapper.ParseInventory(x)).ToList().Where(x => x.LocationID == newOrder.LocationID);
+            foreach (var item in inventory)
+            {
+                foreach (var orderItem in newOrder.OrderItems)
+                {
+                    if(orderItem.OrderItemID == item.ProductID)
+                    {
+                        item.InventoryQuantity -= orderItem.OrderQuantity;
+                    }
+                }
+            } */
+            int locationID = (int)newOrder.LocationID;
+            foreach (var item in newOrder.OrderItems)
+            {
+                var product = _context.Inventories.Single(x => x.InventoryLocation == locationID && x.InventoryProduct == item.OrderItemID);
+                product.Quantity -= item.OrderQuantity;
+                _context.SaveChanges();
+            }
+            
+        }
     }
 }
