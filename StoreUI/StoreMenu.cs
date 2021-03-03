@@ -1,6 +1,7 @@
 using System;
 using StoreModels;
 using StoreBL;
+using Serilog;
 namespace StoreUI
 {
     public class StoreMenu : IMenu
@@ -10,8 +11,13 @@ namespace StoreUI
         {
             _storeBL = storeBL;
         }
+        
         public void Start()
         {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.File("logs.txt")
+                .CreateLogger();
             Boolean stay = true;
             do{
                 Console.Clear();
@@ -41,6 +47,7 @@ namespace StoreUI
                 }
                 
             }while(stay);
+            Log.CloseAndFlush();
         }
         public void SendToLocatinMenu()
         {
@@ -54,6 +61,7 @@ namespace StoreUI
                 GetLocations();
                 Console.WriteLine("Enter ID of store you wish to shop at:");
                 string userInput = Console.ReadLine();
+                Log.Information("Connecting to Store");
                 switch (userInput)
                 {
                     case "1":
@@ -93,6 +101,7 @@ namespace StoreUI
             Console.WriteLine("Customer Entered!");
             Console.WriteLine($"Customer info:\n\tName: {newCustomer.CustomerName}\n\tEmail: {newCustomer.CustomerEmail}");
             Console.ReadLine();
+            Log.Information("Customer Created!");
         }
         public void CreateLocation()
         {
@@ -138,10 +147,12 @@ namespace StoreUI
             if(foundCustomer == null)
             {
                 Console.WriteLine("No customer found :(");
+                Log.Error("Customer not found in DB!");
             }
             else
             {
                 Console.WriteLine(foundCustomer.ToString());
+                Log.Information("Customer Found!");
                 _storeBL.currentCustomer = foundCustomer;
             }
         }

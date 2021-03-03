@@ -3,6 +3,7 @@ using StoreModels;
 using StoreBL;
 using System.Collections.Generic;
 using System.Linq;
+using Serilog;
 namespace StoreUI
 {
     public class LocationMenu : IMenu
@@ -18,6 +19,7 @@ namespace StoreUI
             do
             {
                 Console.Clear();
+                Log.Information("Connected to store");
                 Console.WriteLine($"Welcome to {_storeBL.currentLocation.LocationName}, {_storeBL.currentCustomer.CustomerName}!");
                 Console.WriteLine("Would you like to start an order, see our inventory, or exit?");
                 Console.WriteLine("[0] Let's start an order");
@@ -43,6 +45,7 @@ namespace StoreUI
         }
         public void StartOrder()
         {
+            Log.Information("Begin Order!");
             Order newOrder = new Order
             {
                 LocationID = _storeBL.currentLocation.LocationID,
@@ -310,6 +313,7 @@ namespace StoreUI
             _storeBL.CreateOrder(newOrder);
             _storeBL.UpdateInventory(newOrder);
             Console.WriteLine("order has been submitted!");
+            Log.Information("Order Submitted! Inventory should be updated to reflect!");
             _storeBL.currentCustomer.CustomerOrder = newOrder;
         }
         public void GetInventory()

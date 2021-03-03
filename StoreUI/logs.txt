@@ -1,0 +1,14 @@
+2021-03-02 19:46:06.372 -05:00 [INF] Customer Created!
+2021-03-02 19:46:17.024 -05:00 [INF] Connecting to Store
+2021-03-02 19:46:18.522 -05:00 [INF] Connected to store
+2021-03-02 19:46:24.239 -05:00 [INF] Begin Order!
+2021-03-02 19:47:00.091 -05:00 [ERR] Customer not found in DB!
+2021-03-02 19:48:06.003 -05:00 [ERR] Customer not found in DB!
+2021-03-02 19:48:25.871 -05:00 [INF] Customer Found!
+2021-03-02 19:48:28.164 -05:00 [INF] Connecting to Store
+2021-03-02 19:48:29.217 -05:00 [INF] Connected to store
+2021-03-02 19:48:31.218 -05:00 [INF] Begin Order!
+2021-03-02 19:48:36.516 -05:00 [INF] Order Submitted! Inventory should be updated to reflect!
+2021-03-02 19:48:36.517 -05:00 [INF] Connected to store
+2021-03-02 19:55:32.260 -05:00 [ERR] Customer not found in DB!
+2021-03-02 19:56:04.155 -05:00 [ERR] Customer not found in DB!
