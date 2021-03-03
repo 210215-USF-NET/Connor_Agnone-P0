@@ -97,6 +97,7 @@ namespace StoreUI
                         }else
                         {
                             Console.WriteLine("We don't have that many. Please try again with a lower amount.");
+                            Console.ReadLine();
                         }
                         break;
                     case "2":
@@ -115,6 +116,7 @@ namespace StoreUI
                         }else
                         {
                             Console.WriteLine("We don't have that many. Please try again with a lower amount.");
+                            Console.ReadLine();
                         }
                         break;
                     case "3":
@@ -133,6 +135,7 @@ namespace StoreUI
                         }else
                         {
                             Console.WriteLine("We don't have that many. Please try again with a lower amount.");
+                            Console.ReadLine();
                         }
                         break;
                     case "4":
@@ -151,6 +154,7 @@ namespace StoreUI
                         }else
                         {
                             Console.WriteLine("We don't have that many. Please try again with a lower amount.");
+                            Console.ReadLine();
                         }
                         break;
                     case "5":
@@ -169,6 +173,7 @@ namespace StoreUI
                         }else
                         {
                             Console.WriteLine("We don't have that many. Please try again with a lower amount.");
+                            Console.ReadLine();
                         }
                         break;
                     case "6":
@@ -187,6 +192,7 @@ namespace StoreUI
                         }else
                         {
                             Console.WriteLine("We don't have that many. Please try again with a lower amount.");
+                            Console.ReadLine();
                         }
                         break;
                     case "7":
@@ -205,6 +211,7 @@ namespace StoreUI
                         }else
                         {
                             Console.WriteLine("We don't have that many. Please try again with a lower amount.");
+                            Console.ReadLine();
                         }
                         break;
                     case "8":
@@ -223,6 +230,7 @@ namespace StoreUI
                         }else
                         {
                             Console.WriteLine("We don't have that many. Please try again with a lower amount.");
+                            Console.ReadLine();
                         }
                         break;
                     case "9":
@@ -241,6 +249,7 @@ namespace StoreUI
                         }else
                         {
                             Console.WriteLine("We don't have that many. Please try again with a lower amount.");
+                            Console.ReadLine();
                         }
                         break;
                     case "10":
@@ -259,6 +268,7 @@ namespace StoreUI
                         }else
                         {
                             Console.WriteLine("We don't have that many. Please try again with a lower amount.");
+                            Console.ReadLine();
                         }
                         break;
                     case "11":
@@ -277,6 +287,7 @@ namespace StoreUI
                         }else
                         {
                             Console.WriteLine("We don't have that many. Please try again with a lower amount.");
+                            Console.ReadLine();
                         }
                         break;
                     case "12":
@@ -295,6 +306,7 @@ namespace StoreUI
                         }else
                         {
                             Console.WriteLine("We don't have that many. Please try again with a lower amount.");
+                            Console.ReadLine();
                         }
                         break;
                     case "D":
@@ -304,7 +316,6 @@ namespace StoreUI
                         Console.WriteLine("Invalid input");
                         break;
                 }
-                
             }while(orderNotComplete);
             Console.WriteLine($"You're total is: ${newOrder.OrderTotal}");
             newOrder.LocationID = _storeBL.currentLocation.LocationID;

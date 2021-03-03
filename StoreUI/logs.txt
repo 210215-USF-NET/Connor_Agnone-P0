@@ -12,3 +12,32 @@
 2021-03-02 19:48:36.517 -05:00 [INF] Connected to store
 2021-03-02 19:55:32.260 -05:00 [ERR] Customer not found in DB!
 2021-03-02 19:56:04.155 -05:00 [ERR] Customer not found in DB!
+2021-03-02 21:13:59.527 -05:00 [INF] Customer Created!
+2021-03-02 21:14:30.017 -05:00 [INF] Connecting to Store
+2021-03-02 21:14:31.554 -05:00 [INF] Connected to store
+2021-03-02 21:14:59.262 -05:00 [INF] Connected to store
+2021-03-02 21:15:01.093 -05:00 [INF] Begin Order!
+2021-03-02 21:17:23.739 -05:00 [INF] Customer Found!
+2021-03-02 21:17:28.698 -05:00 [INF] Connecting to Store
+2021-03-02 21:17:29.557 -05:00 [INF] Connected to store
+2021-03-02 21:17:36.648 -05:00 [INF] Connected to store
+2021-03-02 21:17:38.618 -05:00 [INF] Begin Order!
+2021-03-02 21:18:26.556 -05:00 [INF] Order Submitted! Inventory should be updated to reflect!
+2021-03-02 21:18:26.556 -05:00 [INF] Connected to store
+2021-03-02 21:18:32.722 -05:00 [INF] Connected to store
+2021-03-02 21:19:42.289 -05:00 [INF] Customer Found!
+2021-03-02 21:19:44.808 -05:00 [INF] Connecting to Store
+2021-03-02 21:19:45.832 -05:00 [INF] Connected to store
+2021-03-02 21:19:48.697 -05:00 [INF] Begin Order!
+2021-03-02 21:22:46.493 -05:00 [INF] Customer Created!
+2021-03-02 21:23:04.679 -05:00 [INF] Connecting to Store
+2021-03-02 21:23:06.080 -05:00 [INF] Connected to store
+2021-03-02 21:23:21.523 -05:00 [INF] Connected to store
+2021-03-02 21:23:32.982 -05:00 [INF] Customer Found!
+2021-03-02 21:23:35.550 -05:00 [INF] Connecting to Store
+2021-03-02 21:23:36.508 -05:00 [INF] Connected to store
+2021-03-02 21:23:42.992 -05:00 [INF] Connected to store
+2021-03-02 21:23:46.144 -05:00 [INF] Begin Order!
+2021-03-02 21:24:30.920 -05:00 [INF] Order Submitted! Inventory should be updated to reflect!
+2021-03-02 21:24:30.920 -05:00 [INF] Connected to store
+2021-03-02 21:24:46.739 -05:00 [INF] Connected to store
